@@ -7,7 +7,7 @@ import java.util.Objects;
 public record Mower(int x, int y, Direction direction) {
 
     public Mower receiveCommand(String command) {
-        return new Mower(0, 1, Direction.NORTH);
+        return new Mower(0, y+1, Direction.NORTH);
     }
 
     @Override
