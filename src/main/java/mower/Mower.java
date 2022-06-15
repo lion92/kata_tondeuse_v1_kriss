@@ -4,20 +4,10 @@ import direction.Direction;
 
 import java.util.Objects;
 
-public class Mower {
-    private final int x;
-    private final int y;
-    private final Direction direction;
-
-    public Mower(int x, int y, Direction direction) {
-
-        this.x = x;
-        this.y = y;
-        this.direction = direction;
-    }
+public record Mower(int x, int y, Direction direction) {
 
     public Mower receiveCommand(String command) {
-        return new Mower(0,1,Direction.NORTH);
+        return new Mower(0, 1, Direction.NORTH);
     }
 
     @Override
