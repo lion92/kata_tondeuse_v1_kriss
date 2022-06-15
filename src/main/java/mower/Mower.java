@@ -25,7 +25,7 @@ public class Mower {
     }
 
     private Mower moveForward(Direction direction, PositionMower positionMower) {
-        return direction.getiDirection().move(positionMower);
+        return direction.move(direction,positionMower);
     }
 
     @Override

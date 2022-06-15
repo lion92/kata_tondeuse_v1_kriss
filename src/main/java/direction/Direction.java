@@ -1,5 +1,8 @@
 package direction;
 
+import mower.Mower;
+import mower.PositionMower;
+
 public enum Direction {
     WEST(new West()), SOUTH(new South()), EAST(new East()), NORTH(new North());
     private final IDirection iDirection;
@@ -9,5 +12,9 @@ public enum Direction {
 
     public IDirection getiDirection() {
         return iDirection;
+    }
+
+    public Mower move(Direction direction, PositionMower positionMower) {
+        return direction.getiDirection().move(positionMower);
     }
 }
