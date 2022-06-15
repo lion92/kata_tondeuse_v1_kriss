@@ -33,5 +33,22 @@ public class MowerTest {
 
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "0,1,1",
+            "1,2,2",
+            "2,3,3"})
+    void test_parametric_given_the_mower_is_in_x_y_west_when_it_receive_A_then_it_should_be_in_x_expectedx_west
+            (int x, int y, int expectedX) {
+        //Given
+        Mower mower = new Mower(x, y, Direction.WEST);
+        //When
+        Mower actualMower = mower.receiveCommand("A");
+
+        assertThat(actualMower).isEqualTo(new Mower(expectedX,y, Direction.WEST));
+
+    }
+
+
 
 }
