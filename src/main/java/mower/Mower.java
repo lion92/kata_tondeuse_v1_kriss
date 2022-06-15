@@ -2,21 +2,22 @@ package mower;
 
 import direction.Direction;
 
+import javax.swing.text.Position;
 import java.util.Objects;
 
-public record Mower(int x, int y, Direction direction) {
+public class Mower {
 
-    public Mower receiveCommand(String command) {
-        return new Mower(0, y+1, Direction.NORTH);
+    private final PositionMower position;
+    private final Direction direction;
+
+    public Mower(int x, int y, Direction direction){
+        this.position=new PositionMower(x,y);
+        this.direction=direction;
+
     }
 
-    @Override
-    public String toString() {
-        return "Mower{" +
-                "x=" + x +
-                ", y=" + y +
-                ", direction=" + direction +
-                '}';
+    public Mower receiveCommand(String command) {
+        return new Mower(0, position.getY() +1, Direction.NORTH);
     }
 
     @Override
@@ -24,11 +25,19 @@ public record Mower(int x, int y, Direction direction) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Mower mower = (Mower) o;
-        return x == mower.x && y == mower.y && direction == mower.direction;
+        return Objects.equals(position, mower.position) && direction == mower.direction;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y, direction);
+        return Objects.hash(position, direction);
+    }
+
+    @Override
+    public String toString() {
+        return "Mower{" +
+                "position=" + position +
+                ", direction=" + direction +
+                '}';
     }
 }
