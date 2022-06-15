@@ -49,6 +49,38 @@ public class MowerTest {
 
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "1,1,2",
+            "2,2,3",
+            "3,3,4"})
+    void test_parametric_given_the_mower_is_in_x_y_east_when_it_receive_A_then_it_should_be_in_x_expectedx_east
+            (int x, int y, int expectedX) {
+        //Given
+        Mower mower = new Mower(x, y, Direction.EAST);
+        //When
+        Mower actualMower = mower.receiveCommand("A");
+
+        assertThat(actualMower).isEqualTo(new Mower(expectedX,y, Direction.EAST));
+
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "6,1,0",
+            "5,2,1",
+            "8,3,2"})
+    void test_parametric_given_the_mower_is_in_x_y_south_when_it_receive_A_then_it_should_be_in_y_expectedx_south
+            (int x, int y, int expectedY) {
+        //Given
+        Mower mower = new Mower(x, y, Direction.SOUTH);
+        //When
+        Mower actualMower = mower.receiveCommand("A");
+
+        assertThat(actualMower).isEqualTo(new Mower(x,expectedY, Direction.SOUTH));
+
+    }
+
 
 
 }
