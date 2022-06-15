@@ -17,7 +17,13 @@ public class Mower {
     }
 
     public Mower receiveCommand(String command) {
-        return new Mower(0, position.getY() +1, Direction.NORTH);
+        if(direction.equals(Direction.NORTH)) {
+            return new Mower(position.getX(), position.getY() + 1, Direction.NORTH);
+        }
+        if(direction.equals(Direction.WEST)){
+            return new Mower(position.getX()-1, position.getY(),Direction.WEST);
+        }
+        return null;
     }
 
     @Override

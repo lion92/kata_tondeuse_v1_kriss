@@ -35,9 +35,9 @@ public class MowerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "0,1,1",
-            "1,2,2",
-            "2,3,3"})
+            "1,1,0",
+            "2,2,1",
+            "3,3,2"})
     void test_parametric_given_the_mower_is_in_x_y_west_when_it_receive_A_then_it_should_be_in_x_expectedx_west
             (int x, int y, int expectedX) {
         //Given
