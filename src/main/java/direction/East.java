@@ -10,4 +10,8 @@ public class East implements IDirection{
         positionMower=new PositionMower(positionMower.getX()+1, positionMower.getY());
         return new Mower(positionMower,Direction.EAST);
     }
+
+
+
+
 }

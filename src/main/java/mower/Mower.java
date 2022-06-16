@@ -8,7 +8,6 @@ public class Mower {
     private final Direction direction;
     private final PositionMower positionMower;
 
-
     public Mower(int x, int y, Direction direction){
         this.positionMower=new PositionMower(x,y);
         this.direction=direction;
