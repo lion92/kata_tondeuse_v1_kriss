@@ -2,6 +2,7 @@ package mower;
 
 import command.Command;
 import direction.Direction;
+import parserCommand.ParserCommand;
 
 import java.util.Objects;
 
@@ -19,8 +20,20 @@ public class Mower {
         this.direction = direction;
     }
 
-    public Mower receiveCommand(String command) {
-        return new Command().executeCommand(command, this);
+    public Mower executeCommand(String command) {
+        Mower mower = this;
+        for(Command actualCommand:new ParserCommand().parsing(command)){
+            mower = moveMower(mower, actualCommand);
+        }
+        return mower;
+    }
+
+    private Mower moveMower(Mower mower, Command actualCommand) {
+        Direction actualDirection;
+        mower = actualCommand.moveForward(mower.getPositionMower(), mower.getDirection());
+        actualDirection = actualCommand.rotate(actualCommand, mower.getDirection());
+        mower = new Mower(mower.getPositionMower().getX(), mower.getPositionMower().getY(), actualDirection);
+        return mower;
     }
 
     public Direction getDirection() {

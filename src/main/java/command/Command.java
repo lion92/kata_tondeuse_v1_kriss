@@ -13,26 +13,13 @@ public class Command {
 
     private char unitCommand;
 
-    public Command(char c) {
-        this.unitCommand = c;
+    public Command(char unitCommand) {
+        this.unitCommand = unitCommand;
     }
 
     public Command() {
-
     }
 
-    public Mower executeCommand(String command, Mower mower) {
-        for(Command actualCommand:new ParserCommand().parsing(command)){
-            Direction actualDirection;
-            if (actualCommand.unitCommand==('A')) {
-                mower=actualCommand.moveForward(mower.getPositionMower(), mower.getDirection());
-            }
-            actualDirection = actualCommand.rotate(actualCommand, mower.getDirection());
-
-            mower= new Mower(mower.getPositionMower().getX(), mower.getPositionMower().getY(), actualDirection);
-        }
-        return mower;
-        }
 
 
     public Direction rotate
@@ -56,7 +43,14 @@ public class Command {
     }
 
     public Mower moveForward(PositionMower positionMower, Direction direction) {
+        if (this.unitCommand==('A')) {
         return direction.move(direction, positionMower);
+        }
+        return new Mower(positionMower.getX(),positionMower.getY(),direction);
+    }
+
+    public char getUnitCommand() {
+        return unitCommand;
     }
 
     @Override
