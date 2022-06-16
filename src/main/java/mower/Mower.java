@@ -8,9 +8,9 @@ public class Mower {
     private final Direction direction;
     private final PositionMower positionMower;
 
-    public Mower(int x, int y, Direction direction){
-        this.positionMower=new PositionMower(x,y);
-        this.direction=direction;
+    public Mower(int x, int y, Direction direction) {
+        this.positionMower = new PositionMower(x, y);
+        this.direction = direction;
 
     }
 
@@ -20,19 +20,24 @@ public class Mower {
     }
 
     public Mower receiveCommand(String command) {
-        if(command.equals("A")){
+        if (command.equals("A")) {
             return moveForward(direction, positionMower);
         }
-        if(command.equals("L")){
-            return new Mower(1,3,Direction.WEST);
+        if (command.equals("L")) {
+            if (direction.equals(Direction.NORTH)) {
+                return new Mower(1, 3, Direction.WEST);
+            } else if (direction.equals(Direction.WEST)) {
+                return new Mower(1, 3, Direction.SOUTH);
+            }
+
         }
+
         return null;
     }
 
 
-
     private Mower moveForward(Direction direction, PositionMower positionMower) {
-        return direction.move(direction,positionMower);
+        return direction.move(direction, positionMower);
     }
 
     @Override
