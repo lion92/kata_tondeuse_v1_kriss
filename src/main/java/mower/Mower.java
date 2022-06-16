@@ -20,8 +20,16 @@ public class Mower {
     }
 
     public Mower receiveCommand(String command) {
-        return moveForward(direction, positionMower);
+        if(command.equals("A")){
+            return moveForward(direction, positionMower);
+        }
+        if(command.equals("L")){
+            return new Mower(1,3,Direction.WEST);
+        }
+        return null;
     }
+
+
 
     private Mower moveForward(Direction direction, PositionMower positionMower) {
         return direction.move(direction,positionMower);

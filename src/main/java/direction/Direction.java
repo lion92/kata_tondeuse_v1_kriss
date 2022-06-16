@@ -22,4 +22,5 @@ public enum Direction {
     public Mower move(Direction direction, PositionMower positionMower) {
         return direction.getiDirection().move(positionMower);
     }
+
 }

@@ -5,4 +5,6 @@ import mower.PositionMower;
 
 public interface IDirection {
     Mower move(PositionMower positionMower);
+
+
 }
