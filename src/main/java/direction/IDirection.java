@@ -8,6 +8,7 @@ public interface IDirection {
 
     Direction turnLeft();
 
-
     Direction turnRight();
+
+    PositionMower getActualPositionMower(PositionMower positionMower);
 }

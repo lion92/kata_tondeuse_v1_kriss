@@ -1,5 +1,6 @@
 package mower;
 
+import command.Command;
 import direction.Direction;
 
 import java.util.Objects;
@@ -11,7 +12,6 @@ public class Mower {
     public Mower(int x, int y, Direction direction) {
         this.positionMower = new PositionMower(x, y);
         this.direction = direction;
-
     }
 
     public Mower(PositionMower positionMower, Direction direction) {
@@ -20,32 +20,15 @@ public class Mower {
     }
 
     public Mower receiveCommand(String command) {
-        Direction actualDirection = direction;
-        if (command.equals("A")) {
-            return moveForward(direction, positionMower);
-        }
-        if (command.equals("L")) {
-            actualDirection = turnLeft();
-        }
-        if (command.equals("R")) {
-            actualDirection = turnRight();
-        }
-
-        return new Mower(1, 3, actualDirection);
-
+        return new Command().executeCommand(command, this);
     }
 
-    private Direction turnRight() {
-        return direction.getiDirection().turnRight();
+    public Direction getDirection() {
+        return direction;
     }
 
-    private Direction turnLeft() {
-        return direction.getiDirection().turnLeft();
-    }
-
-
-    private Mower moveForward(Direction direction, PositionMower positionMower) {
-        return direction.move(direction, positionMower);
+    public PositionMower getPositionMower() {
+        return positionMower;
     }
 
     @Override

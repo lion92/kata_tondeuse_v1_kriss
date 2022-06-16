@@ -10,11 +10,9 @@ public enum Direction {
     WEST(new West());
 
 
-
-
     private final IDirection iDirection;
 
-    Direction(IDirection iDirection){
+    Direction(IDirection iDirection) {
         this.iDirection = iDirection;
     }
 
