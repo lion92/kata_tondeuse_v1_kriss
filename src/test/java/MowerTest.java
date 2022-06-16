@@ -102,4 +102,28 @@ public class MowerTest {
         assertThat(actualMower).isEqualTo(new Mower(1,3,Direction.SOUTH));
 
     }
+
+    @Test
+    void given_the_mower_is_in_1_3_south_when_it_turnLeft_then_it_should_be_in_1_3_east() {
+        //Given
+        Mower mower = new Mower(1,3,Direction.SOUTH);
+        //When
+        Mower actualMower =mower.receiveCommand("L");
+        //Then
+        assertThat(actualMower).isEqualTo(new Mower(1,3,Direction.EAST));
+
+    }
+
+    @Test
+    void given_the_mower_is_in_1_3_east_when_it_turnLeft_then_it_should_be_in_1_3_North() {
+        //Given
+        Mower mower = new Mower(1,3,Direction.EAST);
+        //When
+        Mower actualMower =mower.receiveCommand("L");
+        //Then
+        assertThat(actualMower).isEqualTo(new Mower(1,3,Direction.NORTH));
+
+    }
+
+
 }

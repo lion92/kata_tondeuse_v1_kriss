@@ -4,10 +4,13 @@ import mower.Mower;
 import mower.PositionMower;
 
 public enum Direction {
-    WEST(new West()),
-    SOUTH(new South()),
+    NORTH(new North()),
     EAST(new East()),
-    NORTH(new North());
+    SOUTH(new South()),
+    WEST(new West());
+
+
+
 
     private final IDirection iDirection;
 

@@ -28,6 +28,10 @@ public class Mower {
                 return new Mower(1, 3, Direction.WEST);
             } else if (direction.equals(Direction.WEST)) {
                 return new Mower(1, 3, Direction.SOUTH);
+            } else if(direction.equals(Direction.SOUTH)){
+                return new Mower(1,3,Direction.EAST);
+            }else if(direction.equals(Direction.EAST)){
+                return new Mower(1,3,Direction.NORTH);
             }
 
         }
