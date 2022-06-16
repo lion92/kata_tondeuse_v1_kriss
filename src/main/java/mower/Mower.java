@@ -20,23 +20,24 @@ public class Mower {
     }
 
     public Mower receiveCommand(String command) {
+        Direction actualDirection = direction;
         if (command.equals("A")) {
             return moveForward(direction, positionMower);
         }
         if (command.equals("L")) {
             if (direction.equals(Direction.NORTH)) {
-                return new Mower(1, 3, Direction.WEST);
+                actualDirection = Direction.WEST;
             } else if (direction.equals(Direction.WEST)) {
-                return new Mower(1, 3, Direction.SOUTH);
-            } else if(direction.equals(Direction.SOUTH)){
-                return new Mower(1,3,Direction.EAST);
-            }else if(direction.equals(Direction.EAST)){
-                return new Mower(1,3,Direction.NORTH);
+                actualDirection = Direction.SOUTH;
+            } else if (direction.equals(Direction.SOUTH)) {
+                actualDirection = Direction.EAST;
+            } else if (direction.equals(Direction.EAST)) {
+                actualDirection = Direction.NORTH;
             }
-
         }
 
-        return null;
+        return new Mower(1, 3, actualDirection);
+
     }
 
 
