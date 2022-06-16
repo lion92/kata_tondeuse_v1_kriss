@@ -25,19 +25,22 @@ public class Mower {
             return moveForward(direction, positionMower);
         }
         if (command.equals("L")) {
-            if (direction.equals(Direction.NORTH)) {
-                actualDirection = Direction.WEST;
-            } else if (direction.equals(Direction.WEST)) {
-                actualDirection = Direction.SOUTH;
-            } else if (direction.equals(Direction.SOUTH)) {
-                actualDirection = Direction.EAST;
-            } else if (direction.equals(Direction.EAST)) {
-                actualDirection = Direction.NORTH;
-            }
+            actualDirection = turnLeft();
+        }
+        if (command.equals("R")) {
+            actualDirection = turnRight();
         }
 
         return new Mower(1, 3, actualDirection);
 
+    }
+
+    private Direction turnRight() {
+        return direction.getiDirection().turnRight();
+    }
+
+    private Direction turnLeft() {
+        return direction.getiDirection().turnLeft();
     }
 
 

@@ -11,7 +11,15 @@ public class East implements IDirection{
         return new Mower(positionMower,Direction.EAST);
     }
 
+    @Override
+    public Direction turnLeft() {
+        return Direction.NORTH;
+    }
 
+    @Override
+    public Direction turnRight() {
+        return Direction.SOUTH;
+    }
 
 
 }
