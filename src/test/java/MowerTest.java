@@ -1,9 +1,12 @@
 import direction.Direction;
 import lawn.Lawn;
 import mower.Mower;
+import mower.Mowers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -253,20 +256,7 @@ public class MowerTest {
 
     }
 
-    @Test
-    void given_the_first_mower_is_in_a_lawn_5_5_and_its_position_is_1_1_east_when_it_receivecommand_AA_and_the_second_is_in_2_1_west_when_the_go_forward_then_they_dont_move() {
-        Lawn lawn = new Lawn(5, 5);
-        //Given
-        Mower firstmower = new Mower(1, 1, Direction.EAST, lawn);
 
-
-        //When
-        Mower firstMower = firstmower.executeCommand("AA");
-
-        //Then
-        assertThat(firstMower).isEqualTo(new Mower(1, 1, Direction.EAST, lawn));
-
-    }
 
 
 }

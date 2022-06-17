@@ -67,4 +67,14 @@ public class PositionMower {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+
+    @Override
+    public String
+    toString() {
+        return "PositionMower{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

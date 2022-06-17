@@ -5,6 +5,7 @@ import direction.Direction;
 import lawn.Lawn;
 import parserCommand.ParserCommand;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Mower {
@@ -12,8 +13,10 @@ public class Mower {
     private PositionMower positionMower;
     private Lawn lawn;
 
+
     public Mower(int x, int y, Direction direction, Lawn lawn) {
         this.lawn = lawn;
+
         this.positionMower = new PositionMower(x, y, lawn);
         this.direction = direction;
     }
