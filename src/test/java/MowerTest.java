@@ -73,9 +73,9 @@ public class MowerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "6,1,0",
+            "5,1,0",
             "5,2,1",
-            "8,3,2"})
+            "5,3,2"})
     void test_parametric_given_the_mower_is_in_x_y_south_when_it_receive_A_then_it_should_be_in_y_expectedx_south
             (int x, int y, int expectedY) {
         Lawn lawn=new Lawn(5,5);
@@ -220,10 +220,10 @@ public class MowerTest {
 
 
 
-        lawn.addMower(mower);
+
 
         //When
-        Mower actualMower =lawn.getMowers().get(0).executeCommand("LAAAAA");
+        Mower actualMower =mower.executeCommand("LAAAAA");
         //Then
         assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.WEST,lawn));
 
@@ -235,10 +235,10 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 1, Direction.NORTH,lawn);
 
-        lawn.addMower(mower);
+
 
         //When
-        Mower actualMower =lawn.getMowers().get(0).executeCommand("AAAAA");
+        Mower actualMower =mower.executeCommand("AAAAA");
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 5, Direction.NORTH,lawn));
 
@@ -250,9 +250,8 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 1, Direction.SOUTH,lawn);
 
-        lawn.addMower(mower);
         //When
-        Mower actualMower =lawn.getMowers().get(0).executeCommand("AAAAA");
+        Mower actualMower =mower.executeCommand("AAAAA");
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 0, Direction.SOUTH,lawn));
 
@@ -263,11 +262,10 @@ public class MowerTest {
         Lawn lawn=new Lawn(5,5);
         //Given
         Mower firstmower = new Mower(1, 1, Direction.EAST,lawn);
-        Mower secondmower = new Mower(2, 1, Direction.WEST,lawn);
-        lawn.addMower(firstmower);
-        lawn.addMower(secondmower);
+
+
         //When
-        Mower firstMower =lawn.getMowers().get(0).executeCommand("AA");
+        Mower firstMower =firstmower.executeCommand("AA");
 
         //Then
         assertThat(firstMower).isEqualTo(new Mower(1, 1, Direction.EAST,lawn));
