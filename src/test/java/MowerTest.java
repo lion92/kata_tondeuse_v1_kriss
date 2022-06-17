@@ -1,3 +1,4 @@
+import command.Command;
 import direction.Direction;
 import lawn.Lawn;
 import mower.Mower;
@@ -16,11 +17,11 @@ public class MowerTest {
     void given_the_mower_is_in_0_0_north_when_it_receive_command_A_it_then_it_should_be_in_0_1_north() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(0, 0, Direction.NORTH, lawn);
+        Mower mower = new Mower(0, 0, Direction.NORTH, lawn,List.of(new Command('A')));
         //when
         Mower actualMower = mower.executeCommand("A");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.NORTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.NORTH, lawn, List.of(new Command('A'))));
 
     }
 
@@ -32,11 +33,11 @@ public class MowerTest {
     void test_parametric_given_the_mower_is_in_x_y_north_when_it_receive_A_then_it_should_be_in_x_expectedy_north(int x, int y, int expectedY) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.NORTH, lawn);
+        Mower mower = new Mower(x, y, Direction.NORTH, lawn,List.of(new Command('A')));
         //When
         Mower actualMower = mower.executeCommand("A");
 
-        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.NORTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.NORTH, lawn,List.of(new Command('A'))));
 
     }
 
@@ -49,11 +50,11 @@ public class MowerTest {
             (int x, int y, int expectedX) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.WEST, lawn);
+        Mower mower = new Mower(x, y, Direction.WEST, lawn,List.of(new Command('A')));
         //When
         Mower actualMower = mower.executeCommand("A");
 
-        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn,List.of(new Command('A'))));
 
     }
 
@@ -66,11 +67,11 @@ public class MowerTest {
             (int x, int y, int expectedX) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.EAST, lawn);
+        Mower mower = new Mower(x, y, Direction.EAST, lawn,List.of(new Command('A')));
         //When
         Mower actualMower = mower.executeCommand("A");
 
-        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.EAST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.EAST, lawn,List.of(new Command('A'))));
 
     }
 
@@ -83,11 +84,11 @@ public class MowerTest {
             (int x, int y, int expectedY) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.SOUTH, lawn);
+        Mower mower = new Mower(x, y, Direction.SOUTH, lawn,List.of(new Command('A')));
         //When
         Mower actualMower = mower.executeCommand("A");
 
-        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.SOUTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.SOUTH, lawn,List.of(new Command('A'))));
 
     }
 
@@ -95,11 +96,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_north_when_it_turnLeft_then_it_should_be_in_1_3_west() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.NORTH, lawn);
+        Mower mower = new Mower(1, 3, Direction.NORTH, lawn,List.of(new Command('L')));
         //When
         Mower actualMower = mower.executeCommand("L");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn,List.of(new Command('L'))));
 
     }
 
@@ -107,11 +108,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_west_when_it_turnLeft_then_it_should_be_in_1_3_south() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.WEST, lawn);
+        Mower mower = new Mower(1, 3, Direction.WEST, lawn,List.of(new Command('L')));
         //When
         Mower actualMower = mower.executeCommand("L");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn,List.of(new Command('L'))));
 
     }
 
@@ -119,11 +120,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_south_when_it_turnLeft_then_it_should_be_in_1_3_east() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn);
+        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn,List.of(new Command('L')));
         //When
         Mower actualMower = mower.executeCommand("L");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn,List.of(new Command('L'))));
 
     }
 
@@ -131,11 +132,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_east_when_it_turnLeft_then_it_should_be_in_1_3_North() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.EAST, lawn);
+        Mower mower = new Mower(1, 3, Direction.EAST, lawn,List.of(new Command('L')));
         //When
         Mower actualMower = mower.executeCommand("L");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn,List.of(new Command('L'))));
 
     }
 
@@ -143,11 +144,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_north_when_it_turnRight_then_it_should_be_in_1_3_east() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.NORTH, lawn);
+        Mower mower = new Mower(1, 3, Direction.NORTH, lawn,List.of(new Command('R')));
         //When
         Mower actualMower = mower.executeCommand("R");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn,List.of(new Command('R'))));
 
     }
 
@@ -155,11 +156,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_east_when_it_turnRight_then_it_should_be_in_1_3_south() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.EAST, lawn);
+        Mower mower = new Mower(1, 3, Direction.EAST, lawn,List.of(new Command('R')));
         //When
         Mower actualMower = mower.executeCommand("R");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn,List.of(new Command('R'))));
 
     }
 
@@ -167,11 +168,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_south_when_it_turnRight_then_it_should_be_in_1_3_west() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn);
+        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn,List.of(new Command('R')));
         //When
         Mower actualMower = mower.executeCommand("R");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn,List.of(new Command('R'))));
 
     }
 
@@ -179,11 +180,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_west_when_it_turnRight_then_it_should_be_in_1_3_north() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.WEST, lawn);
+        Mower mower = new Mower(1, 3, Direction.WEST, lawn,List.of(new Command('R')));
         //When
         Mower actualMower = mower.executeCommand("R");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn,List.of(new Command('R'))));
 
     }
 
@@ -191,11 +192,11 @@ public class MowerTest {
     void given_the_mower_is_in_4_3_north_when_it_receivecommand_LAA_then_it_should_be_in_1_3_north() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(4, 3, Direction.NORTH, lawn);
+        Mower mower = new Mower(4, 3, Direction.NORTH, lawn,List.of(new Command('L'),new Command('A'),new Command('A')));
         //When
         Mower actualMower = mower.executeCommand("LAA");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(2, 3, Direction.WEST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(2, 3, Direction.WEST, lawn,List.of(new Command('L'),new Command('A'),new Command('A'))));
 
     }
 
@@ -207,11 +208,23 @@ public class MowerTest {
     void given_the_mower_is_in_x_y_north_when_it_receivecommand_LAAAAA_then_it_should_be_in_1_3_north(int x, int y, int expectedX) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.NORTH, lawn);
+        Mower mower = new Mower(x, y, Direction.NORTH, lawn,List.of(
+                new Command('L'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A')));
         //When
         Mower actualMower = mower.executeCommand("LAAAAA");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn,List.of(
+                new Command('L'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'))));
 
     }
 
@@ -219,13 +232,25 @@ public class MowerTest {
     void given_the_mower_is_in_a_lawn_5_5_and_its_position_is_1_1_north_when_it_receivecommand_LAA_then_it_should_be_in_0_1_west() {
         //Given
         Lawn lawn = new Lawn(5, 5);
-        Mower mower = new Mower(1, 1, Direction.NORTH, lawn);
+        Mower mower = new Mower(1, 1, Direction.NORTH, lawn,List.of(
+                new Command('L'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A')));
 
 
         //When
         Mower actualMower = mower.executeCommand("LAAAAA");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.WEST, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.WEST, lawn,List.of(
+                new Command('L'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'))));
 
     }
 
@@ -233,13 +258,23 @@ public class MowerTest {
     void given_the_mower_is_in_a_lawn_5_5_and_its_position_is_1_1_north_when_it_receivecommand_AAAAA_then_it_should_be_in_1_5_north() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 1, Direction.NORTH, lawn);
+        Mower mower = new Mower(1, 1, Direction.NORTH, lawn,List.of(
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A')));
 
 
         //When
         Mower actualMower = mower.executeCommand("AAAAA");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 5, Direction.NORTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 5, Direction.NORTH, lawn,List.of(
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'))));
 
     }
 
@@ -247,12 +282,22 @@ public class MowerTest {
     void given_the_mower_is_in_a_lawn_5_5_and_its_position_is_1_1_south_when_it_receivecommand_AA_then_it_should_be_in_1_0_south() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 1, Direction.SOUTH, lawn);
+        Mower mower = new Mower(1, 1, Direction.SOUTH, lawn,List.of(
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A')));
 
         //When
         Mower actualMower = mower.executeCommand("AAAAA");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 0, Direction.SOUTH, lawn));
+        assertThat(actualMower).isEqualTo(new Mower(1, 0, Direction.SOUTH, lawn,List.of(
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'),
+                new Command('A'))));
 
     }
 

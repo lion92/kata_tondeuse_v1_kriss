@@ -9,7 +9,7 @@ public class North implements IDirection {
     @Override
     public Mower move(PositionMower positionMower, Lawn lawn) {
         positionMower = getActualPositionMower(positionMower, lawn);
-        return new Mower(positionMower.x(), positionMower.y(), Direction.NORTH, lawn);
+        return new Mower(positionMower.x(),positionMower.y(), Direction.NORTH,lawn);
     }
 
     public PositionMower getActualPositionMower(PositionMower positionMower, Lawn lawn) {

@@ -5,13 +5,22 @@ import direction.Direction;
 import lawn.Lawn;
 import parserCommand.ParserCommand;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Mower {
     private Direction direction;
     private PositionMower positionMower;
     private final Lawn lawn;
+    private List<Command> listCommand;
 
+
+    public Mower(int x, int y, Direction direction, Lawn lawn, List<Command> listCommand) {
+        this.lawn = lawn;
+        this.listCommand = listCommand;
+        this.positionMower = new PositionMower(x, y, lawn);
+        this.direction = direction;
+    }
 
     public Mower(int x, int y, Direction direction, Lawn lawn) {
         this.lawn = lawn;
