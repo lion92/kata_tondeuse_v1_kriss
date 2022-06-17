@@ -10,56 +10,44 @@ import java.util.Objects;
 public class Mower {
     private Direction direction;
     private PositionMower positionMower;
-    private Lawn lawn;
+    private final Lawn lawn;
 
 
     public Mower(int x, int y, Direction direction, Lawn lawn) {
         this.lawn = lawn;
-
         this.positionMower = new PositionMower(x, y, lawn);
         this.direction = direction;
     }
 
-    public Mower(PositionMower positionMower, Direction direction) {
-        this.positionMower = positionMower;
-        this.direction = direction;
-    }
 
     public Mower executeCommand(String command) {
 
-        Mower mower = this;
+        Mower mower;
         for (Command actualCommand : new ParserCommand().parsing(command)) {
-            mower = moveMower(mower, actualCommand, this.lawn);
+            mower = moveMower(actualCommand);
             this.positionMower = mower.positionMower;
             this.direction = mower.direction;
         }
         return this;
     }
 
-    public Mower moveForward(Command command, PositionMower positionMower, Direction direction, Lawn lawn) {
+    public Mower moveForward(Command command) {
         if (command.getUnitCommand() == ('A')) {
             return direction.move(direction, positionMower, lawn);
         }
-        return new Mower(positionMower.x(), positionMower.y(), direction, lawn);
+
+        return this;
     }
 
-    private Mower moveMower(Mower mower, Command actualCommand, Lawn lawn) {
-        mower = moveForward(actualCommand, mower.getPositionMower(), mower.getDirection(), lawn);
+    private Mower moveMower(Command actualCommand) {
 
-        Direction actualDirection = rotate(actualCommand, mower.getDirection());
-        this.positionMower = mower.positionMower;
+        Direction actualDirection = rotate(actualCommand, direction);
+        this.positionMower = moveForward(actualCommand).positionMower;
         this.direction = actualDirection;
 
         return this;
     }
 
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public PositionMower getPositionMower() {
-        return positionMower;
-    }
 
     public Direction rotate
             (Command command, Direction direction) {
