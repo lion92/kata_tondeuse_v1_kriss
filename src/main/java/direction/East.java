@@ -1,5 +1,6 @@
 package direction;
 
+import lawn.Lawn;
 import mower.Mower;
 import mower.PositionMower;
 

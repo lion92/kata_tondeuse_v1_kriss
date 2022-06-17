@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MowerTest {
@@ -196,29 +198,23 @@ public class MowerTest {
         assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST));
 
     }
-/*
-    @ParameterizedTest
-    @CsvSource({
-            "5,5,0",
-            "4,7,0",
-            "3,6,0"})
-    void given_the_mower_is_in_x_y_north_when_it_receivecommand_LAAAAAA_then_it_should_be_in_1_3_north(int x, int y, int expectedX) {
+
+   @Test
+    void given_the_mower_is_in_a_lawn_5_5_and_its_position_is_1_1_north_when_it_receivecommand_LAA_then_it_should_be_in_0_1_west() {
         //Given
-        Mower mower = new Mower(x, y, Direction.NORTH);
+        Mower mower = new Mower(1, 1, Direction.NORTH);
 
-        Lawn Lawn=new Lawn(x,y);
+        Lawn lawn=new Lawn(5,5);
 
-        Lawn.addMower(mower);
-
-       // Lawn.getMowers().get(mower)
+        lawn.addMower(mower);
 
         //When
-        Mower actualMower = mower.executeCommand("LAAAAA");
+        Mower actualMower =lawn.getMowers().get(0).executeCommand("LAAAAA");
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST));
+        assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.WEST));
 
     }
-*/
+
 
 
 }

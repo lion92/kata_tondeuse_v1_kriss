@@ -7,6 +7,9 @@ public class PositionMower {
     private final int y;
 
     public PositionMower(int x, int y) {
+        if(x<0) {
+            x = 0;
+        }
         this.x = x;
         this.y = y;
     }

@@ -2,6 +2,7 @@ package mower;
 
 import command.Command;
 import direction.Direction;
+import lawn.Lawn;
 import parserCommand.ParserCommand;
 
 import java.util.Objects;
