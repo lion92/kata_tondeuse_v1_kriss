@@ -3,6 +3,7 @@ package mower;
 import command.Command;
 import direction.Direction;
 import lawn.Lawn;
+import parserCommand.ParserCommand;
 
 import java.util.List;
 import java.util.Objects;
@@ -40,17 +41,17 @@ public class Mower {
     }
 
     public Mower moveForward(Command command) {
-        if (command.getUnitCommand() == ('A')) {
-            return direction.move(direction, positionMower, lawn);
-        }
 
-        return this;
+            return direction.move(direction, positionMower, lawn);
+            
     }
 
     private Mower moveMower(Command actualCommand) {
 
         Direction actualDirection = rotate(actualCommand, direction);
+        if (actualCommand.getUnitCommand() == ('A')) {
         this.positionMower = moveForward(actualCommand).positionMower;
+        }
         this.direction = actualDirection;
 
         return this;

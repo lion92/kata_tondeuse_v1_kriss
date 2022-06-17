@@ -9,15 +9,10 @@ public class Command {
         this.unitCommand = unitCommand;
     }
 
-
-    public char getUnitCommand() {
-        return unitCommand;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Command)) return false;
         Command command = (Command) o;
         return unitCommand == command.unitCommand;
     }
@@ -32,5 +27,9 @@ public class Command {
         return "Command{" +
                 "unitCommand=" + unitCommand +
                 '}';
+    }
+
+    public char getUnitCommand() {
+        return unitCommand;
     }
 }
