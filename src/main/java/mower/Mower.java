@@ -8,8 +8,8 @@ import parserCommand.ParserCommand;
 import java.util.Objects;
 
 public class Mower {
-    private  Direction direction;
-    private  PositionMower positionMower;
+    private Direction direction;
+    private PositionMower positionMower;
     private Lawn lawn;
 
     public Mower(int x, int y, Direction direction, Lawn lawn) {
@@ -28,25 +28,25 @@ public class Mower {
         Mower mower = this;
         for (Command actualCommand : new ParserCommand().parsing(command)) {
             mower = moveMower(mower, actualCommand, this.lawn);
-            this.positionMower=mower.positionMower;
-            this.direction=mower.direction;
+            this.positionMower = mower.positionMower;
+            this.direction = mower.direction;
         }
         return this;
     }
 
-    public Mower moveForward(Command command,PositionMower positionMower, Direction direction, Lawn lawn) {
-        if (command.getUnitCommand()== ('A')) {
+    public Mower moveForward(Command command, PositionMower positionMower, Direction direction, Lawn lawn) {
+        if (command.getUnitCommand() == ('A')) {
             return direction.move(direction, positionMower, lawn);
         }
         return new Mower(positionMower.getX(), positionMower.getY(), direction, lawn);
     }
 
     private Mower moveMower(Mower mower, Command actualCommand, Lawn lawn) {
-        mower = moveForward(actualCommand,mower.getPositionMower(), mower.getDirection(), lawn);
+        mower = moveForward(actualCommand, mower.getPositionMower(), mower.getDirection(), lawn);
 
         Direction actualDirection = rotate(actualCommand, mower.getDirection());
-        this.positionMower=mower.positionMower;
-        this.direction=actualDirection;
+        this.positionMower = mower.positionMower;
+        this.direction = actualDirection;
 
         return this;
     }

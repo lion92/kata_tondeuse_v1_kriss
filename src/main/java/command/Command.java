@@ -1,9 +1,6 @@
 package command;
 
 import direction.Direction;
-import lawn.Lawn;
-import mower.Mower;
-import mower.PositionMower;
 
 import java.util.Objects;
 
@@ -16,8 +13,6 @@ public class Command {
 
     public Command() {
     }
-
-
 
 
     public Direction turnRight(Direction direction) {
