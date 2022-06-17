@@ -7,8 +7,8 @@ import mower.PositionMower;
 public class South implements IDirection {
 
     @Override
-    public Mower move(PositionMower positionMower,Lawn lawn) {
-        positionMower = getActualPositionMower(positionMower,lawn);
+    public Mower move(PositionMower positionMower, Lawn lawn) {
+        positionMower = getActualPositionMower(positionMower, lawn);
         return new Mower(positionMower, Direction.SOUTH);
     }
 
@@ -25,6 +25,6 @@ public class South implements IDirection {
 
     @Override
     public PositionMower getActualPositionMower(PositionMower positionMower, Lawn lawn) {
-        return new PositionMower(positionMower.getX(), positionMower.getY() - 1,lawn);
+        return new PositionMower(positionMower.getX(), positionMower.getY() - 1, lawn);
     }
 }

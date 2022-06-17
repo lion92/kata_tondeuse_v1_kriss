@@ -12,8 +12,8 @@ public class West implements IDirection {
         return new Mower(positionMower, Direction.WEST);
     }
 
-    public PositionMower getActualPositionMower(PositionMower positionMower,Lawn lawn) {
-        return new PositionMower(positionMower.getX() - 1, positionMower.getY(),lawn);
+    public PositionMower getActualPositionMower(PositionMower positionMower, Lawn lawn) {
+        return new PositionMower(positionMower.getX() - 1, positionMower.getY(), lawn);
     }
 
     @Override

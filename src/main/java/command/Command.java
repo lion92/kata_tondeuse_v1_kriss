@@ -8,8 +8,6 @@ import mower.PositionMower;
 import java.util.Objects;
 
 public class Command {
-
-
     private char unitCommand;
 
     public Command(char unitCommand) {
@@ -42,14 +40,11 @@ public class Command {
 
     public Mower moveForward(PositionMower positionMower, Direction direction, Lawn lawn) {
         if (this.unitCommand == ('A')) {
-            return direction.move(direction, positionMower,lawn);
+            return direction.move(direction, positionMower, lawn);
         }
-        return new Mower(positionMower.getX(), positionMower.getY(), direction,lawn);
+        return new Mower(positionMower.getX(), positionMower.getY(), direction, lawn);
     }
 
-    public char getUnitCommand() {
-        return unitCommand;
-    }
 
     @Override
     public boolean equals(Object o) {

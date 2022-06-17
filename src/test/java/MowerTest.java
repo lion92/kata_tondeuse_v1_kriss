@@ -250,14 +250,27 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 1, Direction.SOUTH,lawn);
 
-
-
         lawn.addMower(mower);
-
         //When
         Mower actualMower =lawn.getMowers().get(0).executeCommand("AAAAA");
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 0, Direction.SOUTH,lawn));
+
+    }
+
+    @Test
+    void given_the_first_mower_is_in_a_lawn_5_5_and_its_position_is_1_1_east_when_it_receivecommand_AA_and_the_second_is_in_2_1_west_when_the_go_forward_then_they_dont_move() {
+        Lawn lawn=new Lawn(5,5);
+        //Given
+        Mower firstmower = new Mower(1, 1, Direction.EAST,lawn);
+        Mower secondmower = new Mower(2, 1, Direction.WEST,lawn);
+        lawn.addMower(firstmower);
+        lawn.addMower(secondmower);
+        //When
+        Mower firstMower =lawn.getMowers().get(0).executeCommand("AA");
+
+        //Then
+        assertThat(firstMower).isEqualTo(new Mower(1, 1, Direction.EAST,lawn));
 
     }
 

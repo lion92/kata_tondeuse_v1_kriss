@@ -5,7 +5,7 @@ import mower.Mower;
 import mower.PositionMower;
 
 public interface IDirection {
-    Mower move(PositionMower positionMower,Lawn lawn);
+    Mower move(PositionMower positionMower, Lawn lawn);
 
     Direction turnLeft();
 
