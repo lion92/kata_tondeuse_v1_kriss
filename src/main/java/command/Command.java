@@ -15,13 +15,6 @@ public class Command {
     }
 
 
-    public Direction turnRight(Direction direction) {
-        return direction.getiDirection().turnRight();
-    }
-
-    public Direction turnLeft(Direction direction) {
-        return direction.getiDirection().turnLeft();
-    }
 
     public char getUnitCommand() {
         return unitCommand;

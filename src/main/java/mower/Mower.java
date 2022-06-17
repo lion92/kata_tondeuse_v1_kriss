@@ -63,13 +63,22 @@ public class Mower {
             (Command command, Direction direction) {
         Direction actualDirection = direction;
         if (command.equals(new Command('L'))) {
-            actualDirection = new Command().turnLeft(direction);
+            actualDirection = turnLeft(direction);
         }
         if (command.equals(new Command('R'))) {
-            actualDirection = new Command().turnRight(direction);
+            actualDirection = turnRight(direction);
         }
         return actualDirection;
     }
+
+    public Direction turnRight(Direction direction) {
+        return direction.getiDirection().turnRight();
+    }
+
+    public Direction turnLeft(Direction direction) {
+        return direction.getiDirection().turnLeft();
+    }
+
 
     @Override
     public boolean equals(Object o) {
