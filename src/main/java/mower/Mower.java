@@ -39,7 +39,7 @@ public class Mower {
 
         mower = actualCommand.moveForward(mower.getPositionMower(), mower.getDirection(), lawn);
 
-        Direction actualDirection = actualCommand.rotate(actualCommand, mower.getDirection());
+        Direction actualDirection = rotate(actualCommand, mower.getDirection());
         this.positionMower=mower.positionMower;
         this.direction=actualDirection;
 
@@ -52,6 +52,18 @@ public class Mower {
 
     public PositionMower getPositionMower() {
         return positionMower;
+    }
+
+    public Direction rotate
+            (Command command, Direction direction) {
+        Direction actualDirection = direction;
+        if (command.equals(new Command('L'))) {
+            actualDirection = new Command().turnLeft(direction);
+        }
+        if (command.equals(new Command('R'))) {
+            actualDirection = new Command().turnRight(direction);
+        }
+        return actualDirection;
     }
 
     @Override

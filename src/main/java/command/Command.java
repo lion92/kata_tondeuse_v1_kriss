@@ -18,17 +18,7 @@ public class Command {
     }
 
 
-    public Direction rotate
-            (Command command, Direction direction) {
-        Direction actualDirection = direction;
-        if (command.equals(new Command('L'))) {
-            actualDirection = new Command().turnLeft(direction);
-        }
-        if (command.equals(new Command('R'))) {
-            actualDirection = new Command().turnRight(direction);
-        }
-        return actualDirection;
-    }
+
 
     public Direction turnRight(Direction direction) {
         return direction.getiDirection().turnRight();
