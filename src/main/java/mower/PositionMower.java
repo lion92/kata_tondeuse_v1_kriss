@@ -10,6 +10,9 @@ public class PositionMower {
         if(x<0) {
             x = 0;
         }
+        if(y>5){
+            y=5;
+        }
         this.x = x;
         this.y = y;
     }

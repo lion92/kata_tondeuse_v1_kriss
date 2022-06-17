@@ -24,6 +24,8 @@ public class Lawn {
         return x;
     }
 
+
+
     public int getY() {
         return y;
     }

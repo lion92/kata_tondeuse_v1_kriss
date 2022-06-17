@@ -215,6 +215,23 @@ public class MowerTest {
 
     }
 
+    @Test
+    void given_the_mower_is_in_a_lawn_5_5_and_its_position_is_1_1_north_when_it_receivecommand_AAAAA_then_it_should_be_in_1_5_north() {
+        //Given
+        Mower mower = new Mower(1, 1, Direction.NORTH);
+
+        Lawn lawn=new Lawn(5,5);
+
+        lawn.addMower(mower);
+
+        //When
+        Mower actualMower =lawn.getMowers().get(0).executeCommand("AAAAA");
+        //Then
+        assertThat(actualMower).isEqualTo(new Mower(1, 5, Direction.NORTH));
+
+    }
+
+
 
 
 }
