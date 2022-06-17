@@ -1,19 +1,13 @@
 package command;
 
-import direction.Direction;
-
 import java.util.Objects;
 
 public class Command {
-    private char unitCommand;
+    private final char unitCommand;
 
     public Command(char unitCommand) {
         this.unitCommand = unitCommand;
     }
-
-    public Command() {
-    }
-
 
 
     public char getUnitCommand() {

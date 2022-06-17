@@ -25,6 +25,6 @@ public class South implements IDirection {
 
     @Override
     public PositionMower getActualPositionMower(PositionMower positionMower, Lawn lawn) {
-        return new PositionMower(positionMower.getX(), positionMower.getY() - 1, lawn);
+        return new PositionMower(positionMower.x(), positionMower.y() - 1, lawn);
     }
 }

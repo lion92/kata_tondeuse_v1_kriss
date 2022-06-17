@@ -5,7 +5,6 @@ import direction.Direction;
 import lawn.Lawn;
 import parserCommand.ParserCommand;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Mower {
@@ -41,7 +40,7 @@ public class Mower {
         if (command.getUnitCommand() == ('A')) {
             return direction.move(direction, positionMower, lawn);
         }
-        return new Mower(positionMower.getX(), positionMower.getY(), direction, lawn);
+        return new Mower(positionMower.x(), positionMower.y(), direction, lawn);
     }
 
     private Mower moveMower(Mower mower, Command actualCommand, Lawn lawn) {

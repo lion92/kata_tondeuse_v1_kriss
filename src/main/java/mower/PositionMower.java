@@ -2,31 +2,30 @@ package mower;
 
 import lawn.Lawn;
 
-import java.util.Objects;
+public record PositionMower(int x, int y, Lawn lawn) {
 
-public class PositionMower {
-    private final int x;
-    private final int y;
 
     public PositionMower(int x, int y, Lawn lawn) {
+        this.lawn = lawn;
         x = getXmin(x);
         y = getYmin(y);
         x = getXmax(x, lawn);
         y = getYmax(y, lawn);
         this.x = x;
         this.y = y;
+
     }
 
     private int getYmax(int y, Lawn lawn) {
-        if (y > lawn.getY()) {
-            y = lawn.getY();
+        if (y > lawn.y()) {
+            y = lawn.y();
         }
         return y;
     }
 
     private int getXmax(int x, Lawn lawn) {
-        if (x > lawn.getX()) {
-            x = lawn.getX();
+        if (x > lawn.x()) {
+            x = lawn.x();
         }
         return x;
     }
@@ -46,35 +45,4 @@ public class PositionMower {
     }
 
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PositionMower that = (PositionMower) o;
-        return x == that.x && y == that.y;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
-
-
-    @Override
-    public String
-    toString() {
-        return "PositionMower{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
-    }
 }

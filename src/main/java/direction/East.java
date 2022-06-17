@@ -24,7 +24,7 @@ public class East implements IDirection {
 
     @Override
     public PositionMower getActualPositionMower(PositionMower positionMower, Lawn lawn) {
-        return new PositionMower(positionMower.getX() + 1, positionMower.getY(), lawn);
+        return new PositionMower(positionMower.x() + 1, positionMower.y(), lawn);
     }
 
 

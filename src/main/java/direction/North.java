@@ -13,7 +13,7 @@ public class North implements IDirection {
     }
 
     public PositionMower getActualPositionMower(PositionMower positionMower, Lawn lawn) {
-        positionMower = new PositionMower(positionMower.getX(), positionMower.getY() + 1, lawn);
+        positionMower = new PositionMower(positionMower.x(), positionMower.y() + 1, lawn);
         return positionMower;
     }
 
