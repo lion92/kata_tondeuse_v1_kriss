@@ -8,8 +8,8 @@ import parserCommand.ParserCommand;
 import java.util.Objects;
 
 public class Mower {
-    private final Direction direction;
-    private final PositionMower positionMower;
+    private  Direction direction;
+    private  PositionMower positionMower;
     private Lawn lawn;
 
     public Mower(int x, int y, Direction direction, Lawn lawn) {
@@ -28,8 +28,10 @@ public class Mower {
         Mower mower = this;
         for (Command actualCommand : new ParserCommand().parsing(command)) {
             mower = moveMower(mower, actualCommand, this.lawn);
+            this.positionMower=mower.positionMower;
+            this.direction=mower.direction;
         }
-        return mower;
+        return this;
     }
 
     private Mower moveMower(Mower mower, Command actualCommand, Lawn lawn) {
