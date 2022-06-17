@@ -3,7 +3,6 @@ package mower;
 import command.Command;
 import direction.Direction;
 import lawn.Lawn;
-import parserCommand.ParserCommand;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,10 +28,10 @@ public class Mower {
     }
 
 
-    public Mower executeCommand(String command) {
+    public Mower executeCommand(List<Command> commands) {
 
         Mower mower;
-        for (Command actualCommand : new ParserCommand().parsing(command)) {
+        for (Command actualCommand : commands) {
             mower = moveMower(actualCommand);
             this.positionMower = mower.positionMower;
             this.direction = mower.direction;
@@ -78,6 +77,9 @@ public class Mower {
         return direction.getiDirection().turnLeft();
     }
 
+    public List<Command> getListCommand() {
+        return listCommand;
+    }
 
     @Override
     public boolean equals(Object o) {
