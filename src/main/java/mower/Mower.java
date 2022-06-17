@@ -10,9 +10,11 @@ import java.util.Objects;
 public class Mower {
     private final Direction direction;
     private final PositionMower positionMower;
+    private Lawn lawn;
 
-    public Mower(int x, int y, Direction direction) {
-        this.positionMower = new PositionMower(x, y);
+    public Mower(int x, int y, Direction direction,Lawn lawn) {
+        this.lawn = lawn;
+        this.positionMower = new PositionMower(x, y,lawn);
         this.direction = direction;
     }
 
@@ -23,17 +25,17 @@ public class Mower {
 
     public Mower executeCommand(String command) {
         Mower mower = this;
-        for(Command actualCommand:new ParserCommand().parsing(command)){
-            mower = moveMower(mower, actualCommand);
+        for (Command actualCommand : new ParserCommand().parsing(command)) {
+            mower = moveMower(mower, actualCommand, this.lawn);
         }
         return mower;
     }
 
-    private Mower moveMower(Mower mower, Command actualCommand) {
+    private Mower moveMower(Mower mower, Command actualCommand,Lawn lawn) {
         Direction actualDirection;
-        mower = actualCommand.moveForward(mower.getPositionMower(), mower.getDirection());
+        mower = actualCommand.moveForward(mower.getPositionMower(), mower.getDirection(),lawn);
         actualDirection = actualCommand.rotate(actualCommand, mower.getDirection());
-        mower = new Mower(mower.getPositionMower().getX(), mower.getPositionMower().getY(), actualDirection);
+        mower = new Mower(mower.getPositionMower().getX(), mower.getPositionMower().getY(), actualDirection,lawn);
         return mower;
     }
 

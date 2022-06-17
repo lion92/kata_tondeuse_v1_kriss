@@ -1,11 +1,10 @@
 package command;
 
 import direction.Direction;
+import lawn.Lawn;
 import mower.Mower;
 import mower.PositionMower;
-import parserCommand.ParserCommand;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Command {
@@ -19,7 +18,6 @@ public class Command {
 
     public Command() {
     }
-
 
 
     public Direction rotate
@@ -42,11 +40,11 @@ public class Command {
         return direction.getiDirection().turnLeft();
     }
 
-    public Mower moveForward(PositionMower positionMower, Direction direction) {
-        if (this.unitCommand==('A')) {
-        return direction.move(direction, positionMower);
+    public Mower moveForward(PositionMower positionMower, Direction direction, Lawn lawn) {
+        if (this.unitCommand == ('A')) {
+            return direction.move(direction, positionMower,lawn);
         }
-        return new Mower(positionMower.getX(),positionMower.getY(),direction);
+        return new Mower(positionMower.getX(), positionMower.getY(), direction,lawn);
     }
 
     public char getUnitCommand() {

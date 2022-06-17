@@ -1,18 +1,19 @@
 package direction;
 
+import lawn.Lawn;
 import mower.Mower;
 import mower.PositionMower;
 
 public class North implements IDirection {
 
     @Override
-    public Mower move(PositionMower positionMower) {
-        positionMower = getActualPositionMower(positionMower);
+    public Mower move(PositionMower positionMower,Lawn lawn) {
+        positionMower = getActualPositionMower(positionMower, lawn);
         return new Mower(positionMower, Direction.NORTH);
     }
 
-    public PositionMower getActualPositionMower(PositionMower positionMower) {
-        positionMower = new PositionMower(positionMower.getX(), positionMower.getY() + 1);
+    public PositionMower getActualPositionMower(PositionMower positionMower, Lawn lawn) {
+        positionMower = new PositionMower(positionMower.getX(), positionMower.getY() + 1,lawn);
         return positionMower;
     }
 

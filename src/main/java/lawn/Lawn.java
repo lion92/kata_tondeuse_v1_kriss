@@ -8,10 +8,10 @@ import java.util.List;
 public class Lawn {
     private final int x;
     private final int y;
-    private final List<Mower>mowers;
+    private final List<Mower> mowers;
 
     public Lawn(int x, int y) {
-        mowers=new ArrayList<>();
+        mowers = new ArrayList<>();
         this.x = x;
         this.y = y;
     }
@@ -23,7 +23,6 @@ public class Lawn {
     public int getX() {
         return x;
     }
-
 
 
     public int getY() {
