@@ -34,10 +34,15 @@ public class Mower {
         return this;
     }
 
+    public Mower moveForward(Command command,PositionMower positionMower, Direction direction, Lawn lawn) {
+        if (command.getUnitCommand()== ('A')) {
+            return direction.move(direction, positionMower, lawn);
+        }
+        return new Mower(positionMower.getX(), positionMower.getY(), direction, lawn);
+    }
+
     private Mower moveMower(Mower mower, Command actualCommand, Lawn lawn) {
-
-
-        mower = actualCommand.moveForward(mower.getPositionMower(), mower.getDirection(), lawn);
+        mower = moveForward(actualCommand,mower.getPositionMower(), mower.getDirection(), lawn);
 
         Direction actualDirection = rotate(actualCommand, mower.getDirection());
         this.positionMower=mower.positionMower;

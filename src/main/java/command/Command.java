@@ -28,13 +28,9 @@ public class Command {
         return direction.getiDirection().turnLeft();
     }
 
-    public Mower moveForward(PositionMower positionMower, Direction direction, Lawn lawn) {
-        if (this.unitCommand == ('A')) {
-            return direction.move(direction, positionMower, lawn);
-        }
-        return new Mower(positionMower.getX(), positionMower.getY(), direction, lawn);
+    public char getUnitCommand() {
+        return unitCommand;
     }
-
 
     @Override
     public boolean equals(Object o) {
