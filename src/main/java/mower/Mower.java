@@ -39,8 +39,8 @@ public class Mower {
         return this;
     }
 
-    public Mower moveForward(Command command) {
-
+    public Mower moveForward() {
+        
         return direction.move(direction, positionMower, lawn);
 
     }
@@ -49,7 +49,7 @@ public class Mower {
 
         Direction actualDirection = rotate(actualCommand);
         if (actualCommand.getUnitCommand() == ('A')) {
-            this.positionMower = moveForward(actualCommand).positionMower;
+            this.positionMower = moveForward().positionMower;
         }
         this.direction = actualDirection;
 
@@ -83,14 +83,14 @@ public class Mower {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Mower)) return false;
         Mower mower = (Mower) o;
-        return direction == mower.direction && Objects.equals(positionMower, mower.positionMower) && Objects.equals(lawn, mower.lawn);
+        return direction == mower.direction && Objects.equals(positionMower, mower.positionMower) && Objects.equals(lawn, mower.lawn) && Objects.equals(listCommand, mower.listCommand);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(direction, positionMower, lawn);
+        return Objects.hash(direction, positionMower, lawn, listCommand);
     }
 
     @Override
@@ -99,6 +99,7 @@ public class Mower {
                 "direction=" + direction +
                 ", positionMower=" + positionMower +
                 ", lawn=" + lawn +
+                ", listCommand=" + listCommand +
                 '}';
     }
 }
