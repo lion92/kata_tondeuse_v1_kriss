@@ -28,16 +28,16 @@ public class Mower {
     }
 
 
-    public Mower executeCommand(List<Command> commands) {
+    public Mower executeCommand() {
 
-        Mower mower;
-        for (Command actualCommand : commands) {
+        Mower mower = this;
+        for (Command actualCommand : listCommand) {
             mower = moveMower(actualCommand);
             System.out.println("" + actualCommand + "__" + this);
-            this.positionMower = mower.positionMower;
-            this.direction = mower.direction;
-
         }
+        this.positionMower = mower.positionMower;
+        this.direction = mower.direction;
+
 
         return this;
     }

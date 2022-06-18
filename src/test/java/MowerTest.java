@@ -18,7 +18,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(0, 0, Direction.NORTH, lawn, List.of(new Command('A')));
         //when
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.NORTH, lawn, List.of(new Command('A'))));
 
@@ -34,7 +34,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(x, y, Direction.NORTH, lawn, List.of(new Command('A')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
 
         assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.NORTH, lawn, List.of(new Command('A'))));
 
@@ -51,7 +51,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(x, y, Direction.WEST, lawn, List.of(new Command('A')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
 
         assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn, List.of(new Command('A'))));
 
@@ -68,7 +68,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(x, y, Direction.EAST, lawn, List.of(new Command('A')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
 
         assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.EAST, lawn, List.of(new Command('A'))));
 
@@ -85,7 +85,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(x, y, Direction.SOUTH, lawn, List.of(new Command('A')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
 
         assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.SOUTH, lawn, List.of(new Command('A'))));
 
@@ -97,7 +97,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('G')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('G'))));
 
@@ -109,7 +109,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('G')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('G'))));
 
@@ -121,7 +121,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('G')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('G'))));
 
@@ -133,7 +133,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('G')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('G'))));
 
@@ -145,7 +145,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('D')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('D'))));
 
@@ -157,7 +157,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('D')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('D'))));
 
@@ -169,7 +169,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('D')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('D'))));
 
@@ -181,7 +181,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('D')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('D'))));
 
@@ -193,7 +193,7 @@ public class MowerTest {
         //Given
         Mower mower = new Mower(4, 3, Direction.NORTH, lawn, List.of(new Command('G'), new Command('A'), new Command('A')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(2, 3, Direction.WEST, lawn, List.of(new Command('G'), new Command('A'), new Command('A'))));
 
@@ -215,7 +215,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A')));
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn, List.of(
                 new Command('G'),
@@ -241,7 +241,7 @@ public class MowerTest {
 
 
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.WEST, lawn, List.of(
                 new Command('G'),
@@ -266,7 +266,7 @@ public class MowerTest {
 
 
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 5, Direction.NORTH, lawn, List.of(
                 new Command('A'),
@@ -289,7 +289,7 @@ public class MowerTest {
                 new Command('A')));
 
         //When
-        Mower actualMower = mower.executeCommand(mower.getListCommand());
+        Mower actualMower = mower.executeCommand();
         //Then
         assertThat(actualMower).isEqualTo(new Mower(1, 0, Direction.SOUTH, lawn, List.of(
                 new Command('A'),
