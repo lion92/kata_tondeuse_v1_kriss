@@ -14,7 +14,7 @@ import java.util.List;
 public class ParserCommand {
 
     public List<Mower> parsingFile() {
-        List<Mower> mowers = getMowersAfterParsing(new File("").getAbsolutePath() + "\\src\\main\\java\\intruction.txt");
+        List<Mower> mowers = getMowersAfterParsing(new File("").getAbsolutePath() + "\\src\\main\\ressource\\intruction.txt");
         return mowers;
     }
 
@@ -42,16 +42,12 @@ public class ParserCommand {
                         tabAcquisition[ligne].substring(0, 1)),
                         Integer.parseInt(tabAcquisition[ligne].substring(2, 3)), lawn);
 
-                if (tabAcquisition[ligne].charAt(4) == 'N') {
-                    direction = Direction.NORTH;
-                } else if (tabAcquisition[ligne].charAt(4) == 'S') {
-                    direction = Direction.SOUTH;
-                } else if (tabAcquisition[ligne].charAt(4) == 'E') {
-                    direction = Direction.EAST;
-                } else if (tabAcquisition[ligne].charAt(4) == 'W') {
-                    direction = Direction.WEST;
+                switch (tabAcquisition[ligne].charAt(4)){
+                    case 'N'-> direction = Direction.NORTH;
+                    case 'S'->direction = Direction.SOUTH;
+                    case 'E'->direction = Direction.EAST;
+                    case 'W'->direction=Direction.WEST;
                 }
-
             } else {
                 for (String unitCommandString : tabAcquisition[ligne].split("")) {
                     commands.add(new Command(unitCommandString.charAt(0)));
