@@ -37,7 +37,7 @@ public class ParserCommand {
             }
 
             if (ligne % 2 != 0) {
-                System.out.println(tabAcquisition[ligne].charAt(2));
+
                 positionMower = new PositionMower(Integer.parseInt(
                         tabAcquisition[ligne].substring(0, 1)),
                         Integer.parseInt(tabAcquisition[ligne].substring(2, 3)), lawn);
@@ -53,8 +53,8 @@ public class ParserCommand {
                 }
 
             } else {
-                for (String s : tabAcquisition[ligne].split("")) {
-                    commands.add(new Command(s.charAt(0)));
+                for (String unitCommandString : tabAcquisition[ligne].split("")) {
+                    commands.add(new Command(unitCommandString.charAt(0)));
                 }
                 mowers.add(new Mower(positionMower.x(), positionMower.y(), direction, lawn, commands));
             }
