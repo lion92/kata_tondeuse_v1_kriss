@@ -6,12 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Read {
-    private String path;
+    private final String path;
     private String recup;
 
     public Read(String path) {
         this.path = path;
-        this.recup="";
+        this.recup = "";
     }
 
     public String reading() {

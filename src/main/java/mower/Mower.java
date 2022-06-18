@@ -33,14 +33,17 @@ public class Mower {
         Mower mower;
         for (Command actualCommand : commands) {
             mower = moveMower(actualCommand);
+            System.out.println("" + actualCommand + "__" + this);
             this.positionMower = mower.positionMower;
             this.direction = mower.direction;
+
         }
+
         return this;
     }
 
     public Mower moveForward() {
-        
+
         return direction.move(direction, positionMower, lawn);
 
     }
@@ -59,10 +62,10 @@ public class Mower {
 
     public Direction rotate
             (Command command) {
-        if (command.equals(new Command('L'))) {
+        if (command.equals(new Command('G'))) {
             this.direction = turnLeft(direction);
         }
-        if (command.equals(new Command('R'))) {
+        if (command.equals(new Command('D'))) {
             this.direction = turnRight(direction);
         }
         return this.direction;

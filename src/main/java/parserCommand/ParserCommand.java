@@ -14,9 +14,10 @@ import java.util.List;
 public class ParserCommand {
 
     public List<Mower> parsingFile() {
-        List<Mower> mowers = getMowersAfterParsing(new File("").getAbsolutePath()+"\\src\\main\\java\\intruction.txt");
+        List<Mower> mowers = getMowersAfterParsing(new File("").getAbsolutePath() + "\\src\\main\\java\\intruction.txt");
         return mowers;
     }
+
     private List<Mower> getMowersAfterParsing(String path) {
         String acquisition = new Read(path).reading();
         System.out.println(acquisition);
@@ -36,18 +37,18 @@ public class ParserCommand {
             }
 
             if (ligne % 2 != 0) {
-                System.out.println(tabAcquisition[ligne].substring(2, 3));
+                System.out.println(tabAcquisition[ligne].charAt(2));
                 positionMower = new PositionMower(Integer.parseInt(
                         tabAcquisition[ligne].substring(0, 1)),
                         Integer.parseInt(tabAcquisition[ligne].substring(2, 3)), lawn);
 
-                if (tabAcquisition[ligne].substring(4, 5).equals("N")) {
+                if (tabAcquisition[ligne].charAt(4) == 'N') {
                     direction = Direction.NORTH;
-                } else if (tabAcquisition[ligne].substring(4, 5).equals("S")) {
+                } else if (tabAcquisition[ligne].charAt(4) == 'S') {
                     direction = Direction.SOUTH;
-                } else if (tabAcquisition[ligne].substring(4, 5).equals("E")) {
+                } else if (tabAcquisition[ligne].charAt(4) == 'E') {
                     direction = Direction.EAST;
-                } else if (tabAcquisition[ligne].substring(4, 5).equals("W")) {
+                } else if (tabAcquisition[ligne].charAt(4) == 'W') {
                     direction = Direction.WEST;
                 }
 
