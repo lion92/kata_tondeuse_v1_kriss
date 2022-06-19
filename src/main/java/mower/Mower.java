@@ -6,6 +6,7 @@ import lawn.Lawn;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class Mower {
     private Direction direction;
@@ -32,12 +33,29 @@ public class Mower {
 
         Mower mower = this;
         for (Command actualCommand : listCommand) {
-            mower = moveMower(actualCommand);
+            mower = moveMower(actualCommand,false);
             System.out.println("" + actualCommand + "__" + this);
         }
         this.positionMower = mower.positionMower;
         this.direction = mower.direction;
 
+
+        return this;
+    }
+
+    public Mower executeCommand(Predicate<Boolean> booleanPredicate) {
+
+        Mower mower = this;
+        for (Command actualCommand : listCommand) {
+            boolean isObstacle = false;
+
+            isObstacle = booleanPredicate.test(false);
+            mower = moveMower(actualCommand, isObstacle);
+            System.out.println("" + actualCommand + "__" + this);
+        }
+
+        this.positionMower = mower.positionMower;
+        this.direction = mower.direction;
 
         return this;
     }
@@ -48,11 +66,30 @@ public class Mower {
 
     }
 
-    private Mower moveMower(Command actualCommand) {
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public PositionMower getPositionMower() {
+        return positionMower;
+    }
+
+    public Lawn getLawn() {
+        return lawn;
+    }
+
+    public List<Command> getListCommand() {
+        return listCommand;
+    }
+
+    private Mower moveMower(Command actualCommand, boolean obstacle) {
 
         Direction actualDirection = rotate(actualCommand);
+
         if (actualCommand.getUnitCommand() == ('A')) {
-            this.positionMower = moveForward().positionMower;
+            if(obstacle==false){
+                this.positionMower = moveForward().positionMower;
+            }
         }
         this.direction = actualDirection;
 
@@ -79,9 +116,7 @@ public class Mower {
         return direction.getiDirection().turnLeft();
     }
 
-    public List<Command> getListCommand() {
-        return listCommand;
-    }
+
 
     @Override
     public boolean equals(Object o) {
