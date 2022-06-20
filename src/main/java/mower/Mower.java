@@ -33,7 +33,7 @@ public class Mower {
 
         Mower mower = this;
         for (Command actualCommand : listCommand) {
-            mower = moveMower(actualCommand,false);
+            mower = moveMower(actualCommand, false);
             System.out.println("" + actualCommand + "__" + this);
         }
         this.positionMower = mower.positionMower;
@@ -87,7 +87,7 @@ public class Mower {
         Direction actualDirection = rotate(actualCommand);
 
         if (actualCommand.getUnitCommand() == ('A')) {
-            if(obstacle==false){
+            if (obstacle == false) {
                 this.positionMower = moveForward().positionMower;
             }
         }
@@ -115,7 +115,6 @@ public class Mower {
     public Direction turnLeft(Direction direction) {
         return direction.getiDirection().turnLeft();
     }
-
 
 
     @Override

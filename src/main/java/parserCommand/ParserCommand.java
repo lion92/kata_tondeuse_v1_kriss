@@ -42,11 +42,11 @@ public class ParserCommand {
                         tabAcquisition[ligne].substring(0, 1)),
                         Integer.parseInt(tabAcquisition[ligne].substring(2, 3)), lawn);
 
-                switch (tabAcquisition[ligne].charAt(4)){
-                    case 'N'-> direction = Direction.NORTH;
-                    case 'S'->direction = Direction.SOUTH;
-                    case 'E'->direction = Direction.EAST;
-                    case 'W'->direction=Direction.WEST;
+                switch (tabAcquisition[ligne].charAt(4)) {
+                    case 'N' -> direction = Direction.NORTH;
+                    case 'S' -> direction = Direction.SOUTH;
+                    case 'E' -> direction = Direction.EAST;
+                    case 'W' -> direction = Direction.WEST;
                 }
             } else {
                 for (String unitCommandString : tabAcquisition[ligne].split("")) {
