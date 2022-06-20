@@ -4,7 +4,6 @@ import command.Command;
 import direction.Direction;
 import lawn.Lawn;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -31,13 +30,12 @@ public class Mower {
     }
 
 
-
     public Mower executeCommand() {
 
         Mower mower = this;
         for (Command actualCommand : listCommand) {
             mower = moveMower(actualCommand, false);
-           
+
         }
         this.positionMower = mower.positionMower;
         this.direction = mower.direction;

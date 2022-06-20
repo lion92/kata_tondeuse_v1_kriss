@@ -7,14 +7,14 @@ import java.util.function.Predicate;
 
 public class Mowers {
 
-    private List<Mower>currentMowers;
+    private final List<Mower> currentMowers;
 
     public Mowers(List<Mower> currentMowers) {
         this.currentMowers = currentMowers;
     }
 
     public List<Mower> executeMultipleMowers() {
-        List<Mower>currentMowersfinal= new ArrayList<>();
+        List<Mower> currentMowersfinal = new ArrayList<>();
         currentMowers.forEach(mower -> {
             mower.executeCommand(new Predicate<>() {
                 public boolean test(Boolean obstacle) {
