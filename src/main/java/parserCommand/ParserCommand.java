@@ -14,7 +14,7 @@ import java.util.List;
 public class ParserCommand {
 
     public List<Mower> parsingFile() {
-        List<Mower> mowers = getMowersAfterParsing(new File("").getAbsolutePath() + "\\src\\main\\ressource\\intruction.txt");
+        List<Mower> mowers = getMowersAfterParsing(new File("").getAbsolutePath() + "\\src\\main\\ressources\\intruction.txt");
         return mowers;
     }
 
