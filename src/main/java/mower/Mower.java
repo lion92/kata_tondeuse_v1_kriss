@@ -4,6 +4,7 @@ import command.Command;
 import direction.Direction;
 import lawn.Lawn;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -12,31 +13,34 @@ public class Mower {
     private Direction direction;
     private PositionMower positionMower;
     private final Lawn lawn;
-    private List<Command> listCommand;
+    private List<Command> listCommand = new ArrayList<>();
+    private final Predicate<Boolean> isObstacles;
 
 
-    public Mower(int x, int y, Direction direction, Lawn lawn, List<Command> listCommand) {
+    public Mower(int x, int y, Direction direction, Lawn lawn, List<Command> listCommand, Predicate<Boolean> isObstacles) {
         this.lawn = lawn;
         this.listCommand = listCommand;
+        this.isObstacles = isObstacles;
         this.positionMower = new PositionMower(x, y, lawn);
         this.direction = direction;
     }
 
 
-    public Mower(int x, int y, Direction direction, Lawn lawn) {
+    public Mower(int x, int y, Direction direction, Lawn lawn, Predicate<Boolean> isObstacles) {
         this.lawn = lawn;
         this.positionMower = new PositionMower(x, y, lawn);
         this.direction = direction;
+        this.isObstacles = isObstacles;
     }
 
 
     public Mower executeCommand() {
-       return executeCommand(aBoolean -> false);
+        return executeCommand(isObstacle -> false);
     }
 
-    public Mower executeCommand(Predicate<Boolean> booleanPredicate) {
+    public Mower executeCommand(Predicate<Boolean> obstacleDetection) {
         for (Command actualCommand : listCommand) {
-            boolean isObstacle = booleanPredicate.test(false);
+            boolean isObstacle = obstacleDetection.test(false);
             moveMower(actualCommand, isObstacle);
         }
         return this;
@@ -64,38 +68,30 @@ public class Mower {
         return listCommand;
     }
 
-    private Mower moveMower(Command actualCommand, boolean obstacle) {
-
-        Direction actualDirection = rotate(actualCommand);
-
+    private void moveMower(Command actualCommand, boolean obstacle) {
+        rotate(actualCommand);
         if (actualCommand.getUnitCommand() == ('A')) {
-            if (obstacle == false) {
+            if (!obstacle) {
                 this.positionMower = moveForward().positionMower;
             }
         }
-        this.direction = actualDirection;
-
-        return this;
     }
 
-
-    public Direction rotate
-            (Command command) {
+    public void rotate(Command command) {
         if (command.equals(new Command('G'))) {
-            this.direction = turnLeft(direction);
+            this.direction = turnLeft();
         }
         if (command.equals(new Command('D'))) {
-            this.direction = turnRight(direction);
+            this.direction = turnRight();
         }
-        return this.direction;
     }
 
-    public Direction turnRight(Direction direction) {
-        return direction.getiDirection().turnRight();
+    public Direction turnRight() {
+        return this.direction.getiDirection().turnRight();
     }
 
-    public Direction turnLeft(Direction direction) {
-        return direction.getiDirection().turnLeft();
+    public Direction turnLeft() {
+        return this.direction.getiDirection().turnLeft();
     }
 
 

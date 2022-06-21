@@ -3,7 +3,6 @@ package mower;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public class Mowers {
 
@@ -16,22 +15,7 @@ public class Mowers {
     public List<Mower> executeMultipleMowers() {
         List<Mower> currentMowersfinal = new ArrayList<>();
         currentMowers.forEach(mower -> {
-            mower.executeCommand(new Predicate<>() {
-                public boolean test(Boolean obstacle) {
-                    for (Mower mowerOfList : currentMowers) {
-                        if (mowerOfList != mower) {
-                            if (mower.moveForward().getPositionMower().equals(mowerOfList.getPositionMower())) {
-                                System.out.println("Obstacle");
-                                obstacle = true;
-                            }
-                        }
-
-                    }
-
-                    return obstacle;
-                }
-
-            });
+            mower.executeCommand(new ObstacleDetection(this, mower));
 
             currentMowersfinal.add(mower);
         });
@@ -56,5 +40,9 @@ public class Mowers {
     @Override
     public int hashCode() {
         return Objects.hash(currentMowers);
+    }
+
+    public List<Mower> currentMowers() {
+        return currentMowers;
     }
 }

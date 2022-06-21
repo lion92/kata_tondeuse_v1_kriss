@@ -16,11 +16,11 @@ public class MowerTest {
     void given_the_mower_is_in_0_0_north_when_it_receive_command_A_it_then_it_should_be_in_0_1_north() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(0, 0, Direction.NORTH, lawn, List.of(new Command('A')));
+        Mower mower = new Mower(0, 0, Direction.NORTH, lawn, List.of(new Command('A')), isObstacle1 -> false);
         //when
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.NORTH, lawn, List.of(new Command('A'))));
+        assertThat(actualMower).isEqualTo(new Mower(0, 1, Direction.NORTH, lawn, List.of(new Command('A')), isObstacle -> false));
 
     }
 
@@ -32,11 +32,11 @@ public class MowerTest {
     void test_parametric_given_the_mower_is_in_x_y_north_when_it_receive_A_then_it_should_be_in_x_expectedy_north(int x, int y, int expectedY) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.NORTH, lawn, List.of(new Command('A')));
+        Mower mower = new Mower(x, y, Direction.NORTH, lawn, List.of(new Command('A')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
 
-        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.NORTH, lawn, List.of(new Command('A'))));
+        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.NORTH, lawn, List.of(new Command('A')), isObstacle -> false));
 
     }
 
@@ -49,11 +49,11 @@ public class MowerTest {
             (int x, int y, int expectedX) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.WEST, lawn, List.of(new Command('A')));
+        Mower mower = new Mower(x, y, Direction.WEST, lawn, List.of(new Command('A')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
 
-        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn, List.of(new Command('A'))));
+        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.WEST, lawn, List.of(new Command('A')), isObstacle -> false));
 
     }
 
@@ -66,11 +66,11 @@ public class MowerTest {
             (int x, int y, int expectedX) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.EAST, lawn, List.of(new Command('A')));
+        Mower mower = new Mower(x, y, Direction.EAST, lawn, List.of(new Command('A')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
 
-        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.EAST, lawn, List.of(new Command('A'))));
+        assertThat(actualMower).isEqualTo(new Mower(expectedX, y, Direction.EAST, lawn, List.of(new Command('A')), isObstacle -> false));
 
     }
 
@@ -83,11 +83,11 @@ public class MowerTest {
             (int x, int y, int expectedY) {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(x, y, Direction.SOUTH, lawn, List.of(new Command('A')));
+        Mower mower = new Mower(x, y, Direction.SOUTH, lawn, List.of(new Command('A')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
 
-        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.SOUTH, lawn, List.of(new Command('A'))));
+        assertThat(actualMower).isEqualTo(new Mower(x, expectedY, Direction.SOUTH, lawn, List.of(new Command('A')), isObstacle -> false));
 
     }
 
@@ -95,11 +95,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_north_when_it_turnLeft_then_it_should_be_in_1_3_west() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('G')));
+        Mower mower = new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('G')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('G'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('G')), isObstacle -> false));
 
     }
 
@@ -107,11 +107,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_west_when_it_turnLeft_then_it_should_be_in_1_3_south() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('G')));
+        Mower mower = new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('G')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('G'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('G')), isObstacle -> false));
 
     }
 
@@ -119,11 +119,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_south_when_it_turnLeft_then_it_should_be_in_1_3_east() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('G')));
+        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('G')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('G'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('G')), isObstacle -> false));
 
     }
 
@@ -131,11 +131,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_east_when_it_turnLeft_then_it_should_be_in_1_3_North() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('G')));
+        Mower mower = new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('G')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('G'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('G')), isObstacle -> false));
 
     }
 
@@ -143,11 +143,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_north_when_it_turnRight_then_it_should_be_in_1_3_east() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('D')));
+        Mower mower = new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('D')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('D'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('D')), isObstacle -> false));
 
     }
 
@@ -155,11 +155,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_east_when_it_turnRight_then_it_should_be_in_1_3_south() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('D')));
+        Mower mower = new Mower(1, 3, Direction.EAST, lawn, List.of(new Command('D')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('D'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('D')), isObstacle -> false));
 
     }
 
@@ -167,11 +167,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_south_when_it_turnRight_then_it_should_be_in_1_3_west() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('D')));
+        Mower mower = new Mower(1, 3, Direction.SOUTH, lawn, List.of(new Command('D')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('D'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('D')), isObstacle -> false));
 
     }
 
@@ -179,11 +179,11 @@ public class MowerTest {
     void given_the_mower_is_in_1_3_west_when_it_turnRight_then_it_should_be_in_1_3_north() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('D')));
+        Mower mower = new Mower(1, 3, Direction.WEST, lawn, List.of(new Command('D')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('D'))));
+        assertThat(actualMower).isEqualTo(new Mower(1, 3, Direction.NORTH, lawn, List.of(new Command('D')), isObstacle -> false));
 
     }
 
@@ -191,11 +191,11 @@ public class MowerTest {
     void given_the_mower_is_in_4_3_north_when_it_receivecommand_LAA_then_it_should_be_in_1_3_north() {
         Lawn lawn = new Lawn(5, 5);
         //Given
-        Mower mower = new Mower(4, 3, Direction.NORTH, lawn, List.of(new Command('G'), new Command('A'), new Command('A')));
+        Mower mower = new Mower(4, 3, Direction.NORTH, lawn, List.of(new Command('G'), new Command('A'), new Command('A')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
-        assertThat(actualMower).isEqualTo(new Mower(2, 3, Direction.WEST, lawn, List.of(new Command('G'), new Command('A'), new Command('A'))));
+        assertThat(actualMower).isEqualTo(new Mower(2, 3, Direction.WEST, lawn, List.of(new Command('G'), new Command('A'), new Command('A')), isObstacle -> false));
 
     }
 
@@ -213,7 +213,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A')));
+                new Command('A')), isObstacle1 -> false);
         //When
         Mower actualMower = mower.executeCommand();
         //Then
@@ -223,7 +223,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A'))));
+                new Command('A')), isObstacle -> false));
 
     }
 
@@ -237,7 +237,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A')));
+                new Command('A')), isObstacle1 -> false);
 
 
         //When
@@ -249,7 +249,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A'))));
+                new Command('A')), isObstacle -> false));
 
     }
 
@@ -262,7 +262,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A')));
+                new Command('A')), isObstacle1 -> false);
 
 
         //When
@@ -273,7 +273,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A'))));
+                new Command('A')), isObstacle -> false));
 
     }
 
@@ -286,7 +286,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A')));
+                new Command('A')), isObstacle1 -> false);
 
         //When
         Mower actualMower = mower.executeCommand();
@@ -296,7 +296,7 @@ public class MowerTest {
                 new Command('A'),
                 new Command('A'),
                 new Command('A'),
-                new Command('A'))));
+                new Command('A')), isObstacle -> false));
 
     }
 

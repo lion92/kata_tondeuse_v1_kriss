@@ -52,7 +52,7 @@ public class ParserCommand {
                 for (String unitCommandString : tabAcquisition[ligne].split("")) {
                     commands.add(new Command(unitCommandString.charAt(0)));
                 }
-                mowers.add(new Mower(positionMower.x(), positionMower.y(), direction, lawn, commands));
+                mowers.add(new Mower(positionMower.x(), positionMower.y(), direction, lawn, commands, isObstacle -> false));
             }
         }
         return mowers;
