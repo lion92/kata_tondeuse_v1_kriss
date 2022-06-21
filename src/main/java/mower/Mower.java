@@ -31,33 +31,14 @@ public class Mower {
 
 
     public Mower executeCommand() {
-
-        Mower mower = this;
-        for (Command actualCommand : listCommand) {
-            mower = moveMower(actualCommand, false);
-
-        }
-        this.positionMower = mower.positionMower;
-        this.direction = mower.direction;
-
-
-        return this;
+       return executeCommand(aBoolean -> false);
     }
 
     public Mower executeCommand(Predicate<Boolean> booleanPredicate) {
-
-        Mower mower = this;
         for (Command actualCommand : listCommand) {
-            boolean isObstacle = false;
-
-            isObstacle = booleanPredicate.test(false);
-            mower = moveMower(actualCommand, isObstacle);
-
+            boolean isObstacle = booleanPredicate.test(false);
+            moveMower(actualCommand, isObstacle);
         }
-
-        this.positionMower = mower.positionMower;
-        this.direction = mower.direction;
-
         return this;
     }
 
